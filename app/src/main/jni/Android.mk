@@ -25,10 +25,10 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE    := libtwolib-first
-LOCAL_SRC_FILES := first.c
-
+LOCAL_SRC_FILES := libfirst.so
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
 #include $(BUILD_STATIC_LIBRARY)
-include $(BUILD_SHARED_LIBRARY)
+include $(PREBUILT_SHARED_LIBRARY)
 
 # second lib, which will depend on and include the first one
 #
