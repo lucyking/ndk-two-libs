@@ -10,7 +10,7 @@ android {
         targetSdkVersion 3
 
         ndk {
-            moduleName "libtwolib-first"
+            moduleName "libtwolib-second"
         }
 
         testApplicationId "com.example.twolibs.tests"
