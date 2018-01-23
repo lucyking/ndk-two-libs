@@ -13,6 +13,7 @@ android {
             moduleName "libtwolib-second"
         }
 
+
         testApplicationId "com.example.twolibs.tests"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
     }
