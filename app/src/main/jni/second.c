@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-#include "first.h"
+#include "include/first.h"
 #include <jni.h>
 
 jint

@@ -26,18 +26,20 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE    := libtwolib-first
 LOCAL_SRC_FILES := libfirst.so
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
+
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
 #include $(BUILD_STATIC_LIBRARY)
 include $(PREBUILT_SHARED_LIBRARY)
 
 # second lib, which will depend on and include the first one
 #
 include $(CLEAR_VARS)
-
+LOCAL_LDLIBS := -L. -lfirst
 LOCAL_MODULE    := libtwolib-second
-LOCAL_SRC_FILES := second.c
-
+LOCAL_SRC_FILES := second.c first.h
 #LOCAL_STATIC_LIBRARIES := libtwolib-first
 LOCAL_SHARED_LIBRARIES := libtwolib-first
-
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
 include $(BUILD_SHARED_LIBRARY)
+
+#APP_MODULES      := libtwolib-first libtwolib-second
