@@ -4,24 +4,58 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
 
+
+
     defaultConfig {
         applicationId "com.example.twolibs"
-        minSdkVersion 3
-        targetSdkVersion 3
+        minSdkVersion 19
+        targetSdkVersion 26
 
         ndk {
-            moduleName "libtwolib-second"
+            abiFilters 'armeabi-v7a'
+        }
+    }
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            }
         }
 
 
-        testApplicationId "com.example.twolibs.tests"
-        testInstrumentationRunner "android.test.InstrumentationTestRunner"
-    }
+//        testApplicationId "com.example.twolibs.tests"
+//        testInstrumentationRunner "android.test.InstrumentationTestRunner"
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+
+
+
+//    task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
+//        destinationDir file("src/main/libs")
+//        baseName "first"
+//        extension "jar"
+//        from fileTree(dir: "src/main/libs", include: "**/*.so")
+//        into "lib"
+//   }
+
+
+
+    externalNativeBuild {
+        ndkBuild {
+            path "jni/Android.mk"
         }
     }
+
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
 }

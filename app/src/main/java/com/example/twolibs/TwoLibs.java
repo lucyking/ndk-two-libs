@@ -21,12 +21,19 @@ import android.os.Bundle;
 
 public class TwoLibs extends Activity
 {
+    static {
+        try {
+            System.loadLibrary("first");
+            System.loadLibrary("second");
+        } catch (UnsatisfiedLinkError e) {
+        }
+    }
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
         TextView  tv = new TextView(this);
         int       x  = 1000;
         int       y  = 42;
@@ -34,7 +41,7 @@ public class TwoLibs extends Activity
         // here, we dynamically load the library at runtime
         // before calling the native method.
         //
-        System.loadLibrary("twolib-second");
+//        System.loadLibrary("twolib-second");
 
         int  z = add(x, y);
 

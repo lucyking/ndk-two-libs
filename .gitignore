@@ -4,3 +4,5 @@ build
 *.iml
 *.o
 *.o.d
+app/.externalNativeBuild/
+app/obj/
